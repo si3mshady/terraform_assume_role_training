@@ -12,13 +12,14 @@ pipeline {
                cd setter; terraform init;
                terraform plan --out setter.binary;
                terraform show -json setter.binary > setter.json;
-               sudo /home/ec2-user/.local/bin/checkov -f setter.json;
+               pip3 install checkov
+               sudo checkov -f setter.json;
 
                cd ../;
                cd getter; terraform init;
                terraform plan --out getter.binary;
                terraform show -json getter.binary > getter.json;
-               sudo /home/ec2-user/.local/bin/checkov -f getter.json;
+               sudo checkov -f getter.json;
                cd ../;
                '''
             
