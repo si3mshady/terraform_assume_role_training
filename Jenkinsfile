@@ -21,7 +21,6 @@ pipeline {
             //    docker run -d bridgecrew/checkov --file ./getter.json;
             //    cd ../;
             //    '''
-            
             }
         }
         stage('Build & Deploy') {
