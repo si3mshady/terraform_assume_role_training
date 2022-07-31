@@ -2,11 +2,11 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
 
-  region  = "us-east-2"
+  region  = "us-west-1"
   # profile = "source"
 
   assume_role {
-    role_arn = "arn:aws:iam::596780849713:role/assume_role_in_destination_account"   #created by the setter.tf
+    role_arn = "arn:aws:iam::596780849713:role/assume_role_from_source_account_1"   #created by the setter.tf
   }
 }
 data "aws_ami" "ubuntu" {
