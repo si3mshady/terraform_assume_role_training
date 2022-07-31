@@ -32,7 +32,6 @@ pipeline {
                cd ../;
                cd getter;
                terraform apply --auto-approve;
-    
                '''
             }
         }
