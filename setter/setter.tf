@@ -1,10 +1,12 @@
 provider "aws" {
+  shared_credentials_files = ["/home/ec2-user/.aws/credentials"]
   alias   = "source"
   profile = "source"  #named profile as exists in ~/.aws/credentials
   region  = "us-west-1"
 }
 
 provider "aws" {
+  shared_credentials_files = ["/home/ec2-user/.aws/credentials"]
   alias   = "destination"
   profile = "destination"  #named profile as exists in ~/.aws/credentials
   region  = "us-west-1"
@@ -51,5 +53,4 @@ resource "aws_iam_role" "assume_role" {
 #this api is being called by the DESTINATION ACCOUNT - run this first.  
 #creates an IAM assume role in the destination account the source account can use! 
 # https://learn.hashicorp.com/tutorials/terraform/aws-assumerole
-
 
