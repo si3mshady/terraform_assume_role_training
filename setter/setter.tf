@@ -1,11 +1,11 @@
-provider "aws" {
-  # shared_credentials_files = ["/home/ec2-user/.aws/credentials"]
-  alias   = "source"
-  # profile = "source"  #named profile as exists in ~/.aws/credentials
-  access_key = var.access_key
-  secret_key = var.secret_key
-  region  = "us-west-1"
-}
+# provider "aws" {
+#   # shared_credentials_files = ["/home/ec2-user/.aws/credentials"]
+#   alias   = "source"
+#   # profile = "source"  #named profile as exists in ~/.aws/credentials
+#   access_key = var.access_key
+#   secret_key = var.secret_key
+#   region  = "us-west-1"
+# }
 
 provider "aws" {
   # shared_credentials_files = ["/home/ec2-user/.aws/credentials"]
@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "assume_role" {
 
     
       
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.source.account_id}:root"]  #principal being defined is granting access to the SOURCE ACCOUNT to assume a role in the DESTINATION
+      identifiers = ["arn:aws:iam::698347480743:root"]  #principal being defined is granting access to the SOURCE ACCOUNT to assume a role in the DESTINATION
       #this api is being called by the DESTINATION ACCOUNT - run this first.  
     }
   }
