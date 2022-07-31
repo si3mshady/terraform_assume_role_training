@@ -53,7 +53,3 @@ resource "aws_iam_role" "assume_role" {
 # https://learn.hashicorp.com/tutorials/terraform/aws-assumerole
 
 
-cd setter; terraform init;
-terraform plan --out setter.binary;
-terraform show -json setter.binary > setter.json;
-checkov -f setter.json;

@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh 'echo test'
                 // sh('ls -lrth')
-                sh('cd setter && ls -lrtha')
+        
             //    sh '''
             //    cd setter; terraform init;
             //    terraform plan --out setter.binary;
