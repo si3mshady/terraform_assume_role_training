@@ -4,15 +4,22 @@ pipeline {
 
 
      parameters {
-    
+    string(name: 'DOCKER_IMAGE', defaultValue: 'si3mshady/blockchain-uber-clone:1')
+    string(name: 'HELM_CHART', defaultValue: 'uber')
+    string(name: 'CLUSTER_NAME', defaultValue: 'elliotteks')
+    string(name: 'REGION', defaultValue: 'us-west-2')
   }
-  	
+  	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building docker image.'
-            
+              sh('echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin')
+              sh('docker build . -t ${DOCKER_IMAGE}') // sudo chmod 777 /var/run/docker.sock 
+              sh('docker push  ${DOCKER_IMAGE}')
             }
         }
         stage('Test') {
@@ -32,6 +39,3 @@ pipeline {
             }
         }
     }
-}
-            // aws eks update-kubeconfig --name elliotteks --region us-west-2
-//  aws eks delete-nodegroup --cluster-name elliotteks --nodegroup-name elliotts-eks-workernodes --region us-west-2
