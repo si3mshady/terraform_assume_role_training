@@ -26,7 +26,8 @@ pipeline {
         stage('Build & Deploy') {
             steps {
                echo 'building and deploying!!'
-               sh("cd setter && terraform apply --auto-approve && cd ../ && cd getter && terraform apply --auto-approve")
+               sh("cd setter && terraform apply --auto-approve")
+               sh ("cd ../ && cd getter && terraform apply --auto-approve")
               
             }
         }

@@ -9,7 +9,6 @@ provider "aws" {
     role_arn = "arn:aws:iam::596780849713:role/assume_role_in_destination_account"   #created by the setter.tf
   }
 }
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 
