@@ -23,7 +23,7 @@ provider "aws" {
 # }
 
 data "aws_iam_policy" "ec2" {   
-  provider = aws.destination
+
   name     = "AmazonEC2FullAccess"
   #using a managed aws policy for testing. Here we are allowing any entity that uses this policy the ability to have full control over EC2 
 }
@@ -100,13 +100,12 @@ EOF
 #   tags                = {}
 # }
 
-# resource "aws_iam_policy_attachment" "test-attach" {
-#   name       = "test-attachment"
-#   users      = [aws_iam_user.user.name]
-#   roles      = [aws_iam_role.role.name]
-#   groups     = [aws_iam_group.group.name]
-#   policy_arn = aws_iam_policy.policy.arn
-# }
+resource "aws_iam_policy_attachment" "test-attach" {
+  name       = "test-attachment"
+ 
+  roles      = [aws_iam_role.assume_role.name]
+  policy_arn =  data.aws_iam_policy.ec2.arn
+}
 
 #this api is being called by the DESTINATION ACCOUNT - run this first.  
 #creates an IAM assume role in the destination account the source account can use! 
