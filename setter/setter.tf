@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "assume_role" {
     principals {
       type        = "AWS"
 
-       shared_credentials_file = "/home/ec2-user/for_testing/.aws/credentials"
+    
       
       identifiers = ["arn:aws:iam::${data.aws_caller_identity.source.account_id}:root"]  #principal being defined is granting access to the SOURCE ACCOUNT to assume a role in the DESTINATION
       #this api is being called by the DESTINATION ACCOUNT - run this first.  
@@ -51,3 +51,9 @@ resource "aws_iam_role" "assume_role" {
 #this api is being called by the DESTINATION ACCOUNT - run this first.  
 #creates an IAM assume role in the destination account the source account can use! 
 # https://learn.hashicorp.com/tutorials/terraform/aws-assumerole
+
+
+cd setter; terraform init;
+terraform plan --out setter.binary;
+terraform show -json setter.binary > setter.json;
+checkov -f setter.json;
