@@ -27,11 +27,11 @@ pipeline {
             steps {
                sh '''
                cd setter;
-               docker run -i -t hashicorp/terraform:latest apply --auto-approve;
+               terraform apply --auto-approve;
 
                cd ../;
                cd getter;
-               docker run -i -t hashicorp/terraform:latest apply --auto-approve;
+               terraform apply --auto-approve;
     
                '''
             }
