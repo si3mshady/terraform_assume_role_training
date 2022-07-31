@@ -3,7 +3,7 @@ provider "aws" {
   secret_key = var.secret_key
 
   region  = "us-east-2"
-  profile = "source"
+  # profile = "source"
 
   assume_role {
     role_arn = "arn:aws:iam::596780849713:role/assume_role_in_destination_account"   #created by the setter.tf
