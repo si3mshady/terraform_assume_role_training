@@ -28,6 +28,7 @@ pipeline {
                echo 'building and deploying!!'
                sh("cd setter && terraform apply --auto-approve")
                sh("pwd")
+               sh("ls -lrtha")
                sh ("cd ../ && cd getter && terraform apply --auto-approve")
               
             }
