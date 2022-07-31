@@ -18,9 +18,9 @@ provider "aws" {
   region  = "us-west-1"
 }
 
-data "aws_caller_identity" "source" {
-  provider = aws.source   #collecting account creds from the source profile [source]
-}
+# data "aws_caller_identity" "source" {
+#   provider = aws.source   #collecting account creds from the source profile [source]
+# }
 
 data "aws_iam_policy" "ec2" {   
   provider = aws.destination
@@ -39,8 +39,7 @@ data "aws_iam_policy_document" "assume_role" {
     principals {
       type        = "AWS"
 
-    
-      
+  
       identifiers = ["arn:aws:iam::698347480743:root"]  #principal being defined is granting access to the SOURCE ACCOUNT to assume a role in the DESTINATION
       #this api is being called by the DESTINATION ACCOUNT - run this first.  
     }
