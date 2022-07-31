@@ -26,12 +26,9 @@ pipeline {
         stage('Build & Deploy') {
             steps {
                sh '''
-               cd setter;
-               terraform apply --auto-approve;
+               cd setter && terraform apply --auto-approve;
 
-               cd ../;
-               cd getter;
-               terraform apply --auto-approve;
+               cd ../ && cd getter && terraform apply --auto-approve;
                '''
             }
         }
