@@ -71,7 +71,7 @@ data "aws_iam_policy" "ec2" {
 
 
 resource "aws_iam_role" "assume_role" {
-  name = "assume_role_from_source_account"
+  name = "assume_role_from_source_account_1"
 
   assume_role_policy = <<EOF
 {
