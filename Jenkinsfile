@@ -13,13 +13,13 @@ pipeline {
                cd setter; terraform init;
                terraform plan --out setter.binary;
                terraform show -json setter.binary > setter.json;
-               checkov -f setter.json;
+               ~/.local/bin/checkov -f setter.json;
 
                cd ../;
                cd getter; terraform init;
                terraform plan --out getter.binary;
                terraform show -json getter.binary > getter.json;
-               checkov -f getter.json;
+               ~/.local/bin/checkov -f getter.json;
                cd ../;
                '''
             
