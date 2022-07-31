@@ -12,14 +12,13 @@ pipeline {
                cd setter; terraform init;
                terraform plan --out setter.binary;
                terraform show -json setter.binary > ./setter.json;
-               pip3 install checkov
-               checkov -f ./setter.json;
+               docker run bridgecrew/checkov -d  -f ./setter.json;
 
                cd ../;
                cd getter; terraform init;
                terraform plan --out getter.binary;
                terraform show -json getter.binary > ./getter.json;
-               checkov -f ./getter.json;
+               docker run bridgecrew/checkov -f -d ./getter.json;
                cd ../;
                '''
             
